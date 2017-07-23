@@ -1,60 +1,7 @@
 execute pathogen#infect()
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1 
-let g:syntastic_auto_loc_list = 1 
-let g:syntastic_check_on_open = 1 
-let g:syntastic_check_on_wq = 0 
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_html_tidy_exec = 'tidy5'
-
-"NeoBundle Scripts-----------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=/Users/george/.vim/bundle/neobundle.vim/
-endif
-
-" Required:
-call neobundle#begin(expand('/Users/george/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" Add or remove your Bundles here:
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
-
-"javascript syntax
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-"au FileType javascript call JavaScriptFold()
-
-
 syntax on
+filetype plugin on
 
 set autoindent
 set cindent
@@ -78,10 +25,6 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
-let g:user_zen_mode='a'
-
-
-filetype plugin on
 
 "GB2312
 "set fileencodings=utf-8,gb2312,gbk,gb18030
@@ -89,12 +32,6 @@ filetype plugin on
 "set encoding=prc
 
 no ; :
-no - $
-no _ ^
-"no N <C-w><C-w>
-"no T <C-w><C-r>
-"no D <C-w><C-r>
-
 nnoremap H gT
 nnoremap L gt
 nnoremap <C-j> 8<Down>
@@ -105,3 +42,81 @@ nnoremap M :Vexplore<CR>
 "nnoremap R :!grunt<CR>
 nnoremap R :!python manage.py runserver<CR>
 imap <TAB> <ESC>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"Zendcoding
+let g:user_zen_mode='a'
+
+" Javascript Development
+"vim-javascript
+let g:javascript_plugin_flow = 1
+
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_noarg_arrow_function = "^"
+let g:javascript_conceal_underscore_arrow_function = "*"
+set conceallevel=1
+
+
+
+let g:syntastic_always_populate_loc_list = 1 
+let g:syntastic_auto_loc_list = 1 
+let g:syntastic_check_on_open = 1 
+let g:syntastic_check_on_wq = 0 
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_tidy_exec = 'tidy5'
+
+""NeoBundle Scripts-----------------------------
+"if has('vim_starting')
+"  if &compatible
+"    set nocompatible               " Be iMproved
+"  endif
+"
+"  " Required:
+"  set runtimepath+=/Users/george/.vim/bundle/neobundle.vim/
+"endif
+"
+"" Required:
+"call neobundle#begin(expand('/Users/george/.vim/bundle'))
+"
+"" Let NeoBundle manage NeoBundle
+"" Required:
+"NeoBundleFetch 'Shougo/neobundle.vim'
+"
+"" Add or remove your Bundles here:
+"NeoBundle 'Shougo/neosnippet.vim'
+"NeoBundle 'Shougo/neosnippet-snippets'
+"NeoBundle 'tpope/vim-fugitive'
+"NeoBundle 'ctrlpvim/ctrlp.vim'
+"NeoBundle 'flazz/vim-colorschemes'
+"
+"" You can specify revision/branch/tag.
+"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+"
+"" Required:
+"call neobundle#end()
+"
+"" Required:
+"filetype plugin indent on
+"
+"" If there are uninstalled bundles found on startup,
+"" this will conveniently prompt you to install them.
+"NeoBundleCheck
+""End NeoBundle Scripts-------------------------
+"
+""javascript syntax
+"NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+""au FileType javascript call JavaScriptFold()
+
+
