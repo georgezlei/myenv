@@ -10,7 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
@@ -45,8 +45,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo.1
 set number
 set hlsearch
 set encoding=utf-8
-set background=dark
-
+set laststatus=2 "make powerline display at default screen
 
 function! ResCur()
   if line("'\"") <= line("$")
@@ -83,6 +82,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+"Indentation without losing selection
+vnoremap < <gv
+vnoremap > >gv
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -104,7 +107,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
         \ shiftwidth=2
 
 " Flag unnecessary white spaces
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -124,10 +127,10 @@ let python_highlight_all=1
 
 " Color scheme selection
 if has('gui_running')
+  set background=dark
   colorscheme solarized
 else
   colorscheme zenburn
 endif
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-let g:Powerline_symbols = 'fancy'
