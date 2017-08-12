@@ -68,11 +68,8 @@ augroup END
 let mapleader=","
 
 no ; :
-nnoremap H gT
-nnoremap L gt
-nnoremap T :tabnew<CR>
-nnoremap M :Vexplore<CR>
 imap <TAB> <ESC>
+nnoremap <leader>t :NERDTree<CR>
 
 "split navigations
 set splitbelow
@@ -96,7 +93,6 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4
         \ softtabstop=4
         \ shiftwidth=4
-        \ textwidth=79
         \ expandtab
         \ autoindent
         \ fileformat=unix
@@ -107,7 +103,8 @@ au BufNewFile,BufRead *.js, *.html, *.css
         \ shiftwidth=2
 
 " Flag unnecessary white spaces
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+:highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match ExtraWhitespace /\s\+$/
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -134,3 +131,9 @@ else
 endif
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+augroup reload_vimrc " {
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
