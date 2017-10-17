@@ -37,7 +37,7 @@ syntax on
 
 set autoindent
 set cindent
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 set tabstop=4
 set ruler
@@ -46,6 +46,9 @@ set number
 set hlsearch
 set encoding=utf-8
 set laststatus=2 "make powerline display at default screen
+set exrc "project level .vimrc
+set secure "stop unsafe operation from peoject level .vimrc
+
 
 function! ResCur()
   if line("'\"") <= line("$")
@@ -67,7 +70,6 @@ augroup END
 
 let mapleader=","
 
-no ; :
 imap <TAB> <ESC>
 nnoremap <leader>t :NERDTree<CR>
 
@@ -78,6 +80,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <C-M> <C-W>_
+nnoremap <C-N> <C-W>=
 
 "Indentation without losing selection
 vnoremap < <gv
@@ -85,8 +89,9 @@ vnoremap > >gv
 
 " Enable folding
 set foldmethod=indent
-set foldlevel=99
-nnoremap <space> za "Enable folding with the spacebar
+set foldnestmax=2
+nnoremap <space> za
+vnoremap <space> zf
 
 " PEP8 indentation
 au BufNewFile,BufRead *.py
@@ -98,9 +103,9 @@ au BufNewFile,BufRead *.py
         \ fileformat=unix
 
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-        \ softtabstop=2
-        \ shiftwidth=2
+    \ set tabstop=4
+        \ softtabstop=4
+        \ shiftwidth=4
 
 " Flag unnecessary white spaces
 :highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
